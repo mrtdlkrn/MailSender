@@ -14,7 +14,7 @@ namespace MailSender.Concrete
             _smtpSetting.Host = "smtp.gmail.com";
             _smtpSetting.Port = 587;
             _smtpSetting.UserName = "infocartender@gmail.com";
-            _smtpSetting.Password = "paczonwudhcxehdn";
+            _smtpSetting.Password = "pwqmthuvomlowtfd";
             _smtpSetting.UseSSL = true;
             _smtpSetting.Title = "Test Kişisi";
 

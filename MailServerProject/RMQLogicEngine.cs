@@ -12,7 +12,7 @@ namespace MailServerProject
 
         public RMQLogicEngine()
         {
-            kanalOlustur();
+            CreateChannel();
         }
 
         ~RMQLogicEngine()
@@ -24,10 +24,10 @@ namespace MailServerProject
         public static RMQLogicEngine CreateNewObject() => new RMQLogicEngine();
         public void StartQueueMessageProcessor()
         {
-            MessageProcessor mesajIsleyen = new MessageProcessor(_channel);
-            _channel.BasicConsume("demoqueue", false, mesajIsleyen);
+            MessageProcessor MessageProcessor = new MessageProcessor(_channel);
+            _channel.BasicConsume("Register", false, MessageProcessor);
         }
-        private void kanalOlustur()
+        private void CreateChannel()
         {
             _connection = GetConnectionInfo().CreateConnection();
             _channel = _connection.CreateModel();
@@ -37,10 +37,9 @@ namespace MailServerProject
         {
             ConnectionFactory connectionFactory = new ConnectionFactory
             {
-
                 HostName = "localhost",
-                UserName = "rabbitmq",
-                Password = "rabbitmq"
+                Password = "guest",
+                UserName = "guest",
             };
 
             return connectionFactory;
